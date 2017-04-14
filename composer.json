@@ -19,6 +19,7 @@
         "illuminate/contracts": ">=5.3",
         "nesbot/carbon": "1.22.*"
     },
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "DaneEveritt\\LoginNotifications\\": "src/"
