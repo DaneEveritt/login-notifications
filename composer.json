@@ -1,0 +1,26 @@
+{
+    "name": "daneeveritt/login-notifications",
+    "description": "Login notifications for Laravel",
+    "keywords": ["laravel", "login", "notifications", "events", "email"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dane Everitt",
+            "email": "dane@daneeveritt.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "illuminate/auth": "5.3.*|5.4.*",
+        "illuminate/foundation": "5.3.*|5.4.*",
+        "illuminate/support": "5.3.*|5.4.*",
+        "illuminate/bus": "5.3.*|5.4.*",
+        "illuminate/contracts": "5.3.*|5.4.*",
+        "nesbot/carbon": "1.22.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "DaneEveritt\\LoginNotifications\\": "src/"
+        }
+    }
+}
