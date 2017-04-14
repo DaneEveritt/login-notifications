@@ -3,6 +3,7 @@
     "description": "Login notifications for Laravel",
     "keywords": ["laravel", "login", "notifications", "events", "email"],
     "license": "MIT",
+    "type": "library",
     "authors": [
         {
             "name": "Dane Everitt",
