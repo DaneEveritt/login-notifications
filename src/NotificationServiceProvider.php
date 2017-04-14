@@ -28,6 +28,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Auth\EloquentUserProvider;
 use DaneEveritt\LoginNotifications\Notifications\FailedLoginNotification;
+use DaneEveritt\LoginNotifications\Notifications\SuccessfulLoginNotification;
 
 class NotificationServiceProvider extends ServiceProvider
 {
@@ -39,6 +40,13 @@ class NotificationServiceProvider extends ServiceProvider
     protected $failedEvent = 'Illuminate\Auth\Events\Failed';
 
     /**
+     * The FQCN of the successful login event.
+     *
+     * @var string
+     */
+    protected $successEvent = 'Illuminate\Auth\Events\Login';
+
+    /**
      * Boot the notification provider.
      *
      * @return void
@@ -48,6 +56,14 @@ class NotificationServiceProvider extends ServiceProvider
         $this->app['events']->listen($this->failedEvent, function ($event) {
             if (isset($event->user) && is_a($event->user, 'Illuminate\Database\Eloquent\Model')) {
                 $event->user->notify(new FailedLoginNotification(
+                    $this->app['request']->ip()
+                ));
+            }
+        });
+
+        $this->app['events']->listen($this->successEvent, function ($event) {
+            if (isset($event->user) && is_a($event->user, 'Illuminate\Database\Eloquent\Model')) {
+                $event->user->notify(new SuccessfulLoginNotification(
                     $this->app['request']->ip()
                 ));
             }
